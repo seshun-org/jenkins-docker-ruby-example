@@ -6,10 +6,10 @@ node('dind') {
         
   stage 'Package Docker image'
 
-  def img = docker.build('coxauto/jenkins-docker-ruby-example:latest', '.')
+  def img = docker.build('seshun/ruby-sample:latest', '.')
 
   stage 'Publish'
-  docker.withRegistry('https://nexus.coxautodev.com', 'nexus-admin') {
+  docker.withRegistry('https://hub.docker.com', 'seshun-dockerhub') {
      img.push('latest')
   }
 
