@@ -9,7 +9,7 @@ node('dind') {
   def img = docker.build('seshun/ruby-sample:latest', '.')
 
   stage 'Publish'
-  docker.withRegistry('https://hub.docker.com', 'seshun') {
+  docker.withRegistry('https://index.docker.io/v1/', 'seshun') {
      img.push('latest')
   }
 
